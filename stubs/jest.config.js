@@ -8,7 +8,7 @@ module.exports = {
         "<rootDir>tests/Vue/setup.js"
     ],
     "moduleNameMapper": {
-        "^@/(.*)$": "<rootDir>/resources/assets/js/$1"
+        "^@/(.*)$": "<rootDir>/resources/js/$1"
     },
     "roots": [
         "<rootDir>/tests/Vue"

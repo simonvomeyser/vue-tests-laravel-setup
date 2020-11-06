@@ -1,6 +1,5 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const path = require('path');
 
 module.exports = {
   checkEnvironment: () => {
@@ -9,14 +8,15 @@ module.exports = {
   run: () => {
     const cwd = process.cwd();
 
-    fsExtra.copySync(cwd  +  '/stubs/.babelrc', cwd + '/.babelrc');
+    fsExtra.copySync(__dirname  +  '/stubs/.babelrc', cwd + '/.babelrc');
+    fsExtra.copySync(__dirname  +  '/stubs/jest.config.js', cwd + '/jest.config.js');
 
     fs.mkdirSync(cwd + '/tests/Vue', {recursive: true})
 
-    fsExtra.copySync(cwd  +  '/stubs/Counter.spec.js', cwd + '/tests/Vue/ExampleCounter.spec.js');
-    fsExtra.copySync(cwd  +  '/stubs/setup.js', cwd + '/tests/Vue/setup.js');
+    fsExtra.copySync(__dirname  +  '/stubs/Counter.spec.js', cwd + '/tests/Vue/Counter.spec.js');
+    fsExtra.copySync(__dirname  +  '/stubs/setup.js', cwd + '/tests/Vue/setup.js');
 
     fs.mkdirSync(cwd + '/resources/js', {recursive: true})
-    fsExtra.copySync(cwd  +  '/stubs/Counter.vue', cwd + '/resources/js/ExampleCounter.vue');
+    fsExtra.copySync(__dirname  +  '/stubs/Counter.vue', cwd + '/resources/js/Counter.vue');
   }
 }
