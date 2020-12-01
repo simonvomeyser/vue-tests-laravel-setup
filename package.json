@@ -4,7 +4,8 @@
   "description": "",
   "main": "App.js",
   "dependencies": {
-    "fs-extra": "^9.0.1"
+    "fs-extra": "^9.0.1",
+    "prompts": "^2.4.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -2,9 +2,6 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 
 module.exports = {
-  checkEnvironment: () => {
-    console.log('Env Okay!')
-  },
   run: () => {
     const cwd = process.cwd();
 
