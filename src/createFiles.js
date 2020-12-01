@@ -1,8 +1,7 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 
-module.exports = {
-  run: () => {
+module.exports = function createFiles() {
     const cwd = process.cwd();
 
     fsExtra.copySync(__dirname  +  '/stubs/.babelrc', cwd + '/.babelrc');
@@ -15,5 +14,4 @@ module.exports = {
 
     fs.mkdirSync(cwd + '/resources/js', {recursive: true})
     fsExtra.copySync(__dirname  +  '/stubs/Counter.vue', cwd + '/resources/js/Counter.vue');
-  }
 }

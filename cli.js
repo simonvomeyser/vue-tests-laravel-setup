@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
 // const App = require("./app.js");
-const checkEnvironment = require("./checkEnvironment");
+const checkEnvironment = require("./src/checkEnvironment");
+const createFiles = require("./src/createFiles");
 
 const [,, ...args] = process.argv;
 
 checkEnvironment()
     .then(() => {
-        console.log("run setup");
+        createFiles();
     })
     .catch((e) => {
         console.log(e.message);
     })
-
-// App.run(args);
