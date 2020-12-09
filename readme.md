@@ -4,7 +4,7 @@ This package aims to provide an easy, reusable way to set up Vue.js tests in Lar
 
 The necessary config files will be created with one line of code, as well as an example `Counter` component with it's corresponding test.
 
-I've written quite an [extensive blogpost](https://simple-web.dev/vue-testing-in-laravel) about the setup, if you want to do the setup yourself.
+I've written quite an [extensive blogpost](https://simple-web.dev/vue-testing-in-laravel) about the setup, if you want to do everything yourself.
 
 ## What's to do
 
