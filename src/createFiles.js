@@ -1,17 +1,27 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 
+const cwd = process.cwd();
+
 module.exports = function createFiles() {
-    const cwd = process.cwd();
 
-    fsExtra.copySync(__dirname  +  '/stubs/.babelrc', cwd + '/.babelrc');
-    fsExtra.copySync(__dirname  +  '/stubs/jest.config.js', cwd + '/jest.config.js');
+    copyStub('.babelrc', '/.babelrc');
+    copyStub('jest.config.js', '/jest.config.js');
 
-    fs.mkdirSync(cwd + '/tests/Vue', {recursive: true})
+    mkdir('/tests/Vue')
 
-    fsExtra.copySync(__dirname  +  '/stubs/Counter.spec.js', cwd + '/tests/Vue/Counter.spec.js');
-    fsExtra.copySync(__dirname  +  '/stubs/setup.js', cwd + '/tests/Vue/setup.js');
+    copyStub('Counter.spec.js', '/tests/Vue/Counter.spec.js');
+    copyStub('setup.js', '/tests/Vue/setup.js');
 
-    fs.mkdirSync(cwd + '/resources/js', {recursive: true})
-    fsExtra.copySync(__dirname  +  '/stubs/Counter.vue', cwd + '/resources/js/Counter.vue');
+    mkdir('/resources/js')
+    copyStub('Counter.vue', '/resources/js/Counter.vue');
+}
+
+const copyStub = (stubName, where) => {
+    fsExtra.copySync(__dirname  + '/stubs/' + stubName, cwd + where);
+}
+
+
+const mkdir = (name) => {
+    fs.mkdirSync(cwd + name, {recursive: true})
 }
