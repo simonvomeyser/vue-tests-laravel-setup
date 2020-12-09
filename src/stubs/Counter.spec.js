@@ -7,7 +7,7 @@ describe('Counter.vue', () => {
 
         expect(wrapper.vm.counter).toBe(0);
 
-        wrapper.find('[jest="increment-button"]').trigger('click')
+        wrapper.find('button').trigger('click')
 
         expect(wrapper.vm.counter).toBe(1);
     })
