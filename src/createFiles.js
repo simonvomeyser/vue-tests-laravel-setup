@@ -1,24 +1,30 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
+const question = require('./question');
+const success = require('./success');
+const exists = require('./exists');
 
 const cwd = process.cwd();
 
-module.exports = function createFiles() {
+module.exports = async function  createFiles() {
 
-    copyStub('.babelrc', '/.babelrc');
-    copyStub('jest.config.js', '/jest.config.js');
+    await copyStub('.babelrc', '/.babelrc');
+    await copyStub('jest.config.js', '/jest.config.js');
 
     mkdir('/tests/Vue')
 
-    copyStub('Counter.spec.js', '/tests/Vue/Counter.spec.js');
-    copyStub('setup.js', '/tests/Vue/setup.js');
-
+    await copyStub('Counter.spec.js', '/tests/Vue/Counter.spec.js');
+    await copyStub('setup.js', '/tests/Vue/setup.js');
     mkdir('/resources/js')
-    copyStub('Counter.vue', '/resources/js/Counter.vue');
+    await copyStub('Counter.vue', '/resources/js/Counter.vue');
 }
 
-const copyStub = (stubName, where) => {
+const copyStub = async (stubName, where) => {
+    if (exists(cwd +where)) {
+        await question('File ' + where + ' already exists, overwrite?')
+    }
     fsExtra.copySync(__dirname  + '/stubs/' + stubName, cwd + where);
+    return success('Created file ' + where )
 }
 
 
