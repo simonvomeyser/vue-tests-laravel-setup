@@ -1,6 +1,6 @@
-const fs = require('fs');
-const prompts = require('prompts');
-const figures = require('prompts/dist/util/figures')
+const exists = require('./exists');
+const question = require('./question');
+const success = require('./success');
 
 module.exports = async function checkEnvironment() {
 
@@ -34,28 +34,3 @@ function checkForGitRepo() {
     }
 }
 
-function exists(path) {
-    return fs.existsSync(path);
-}
-
-function success(message) {
-    console.log(figures.tick + " " + message);
-}
-
-function question(message) {
-    return prompts(
-        [{
-            type: 'toggle',
-            name: "value",
-            message,
-            initial: false,
-            inactive: 'no',
-            active: 'yes',
-        }]).then(({value}) => {
-
-        if (!value) {
-            throw new Error('Test creation stopped.');
-        }
-
-    });
-}
