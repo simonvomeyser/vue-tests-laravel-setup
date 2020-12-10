@@ -2,7 +2,8 @@
   "name": "vue-tests-laravel-setup",
   "version": "1.0.0",
   "description": "A simple way to get started with Vue.js testing in your Laravel application",
-  "main": "App.js",
+  "main": "cli.js",
+  "bin": "./cli.js",
   "dependencies": {
     "fs-extra": "^9.0.1",
     "kleur": "^4.1.3",
